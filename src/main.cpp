@@ -79,5 +79,8 @@ void loop() {
   Serial.print("Voltage: ");
   Serial.println(currentVoltage);
 
+  Serial.print("Voltage (Offset Adjusted): ");
+  Serial.println(currentVoltage - 0.5);
+
   delay(500);
 }
