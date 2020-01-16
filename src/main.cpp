@@ -5,21 +5,6 @@ int sensorInput;
 double currentTemp;
 double currentVoltage;
 
-/* 
- *                              accuracyOffset: An Explanation
- * 
- *                             DEFAULT VALUE IS ZERO-POINT-ZERO.
- *              DO NOT CHANGE THIS VALUE UNLESS ACTUAL TEMPERATURE IS DIFFERENT
- *                         FROM THE TEMPERATURE OUTPUT FROM THE DEVICE.
- * 
- *              If there is a difference, then set this value to the difference
- *                          between the DEVICE TEMP and ACTUAL TEMP.
- * 
- *           * accuracyOffset = (Temperature from Device) - (Actual Temperature) *
- *
- */
-double accuracyOffset = 0.0; 
-
 // REMEMBER TO CHANGE TEMP RANGE VALUES BEFORE USING
 // ADJUST LED PIN NUMBERS IF NECESSARY
 int redLED = 8;
@@ -76,7 +61,7 @@ void setup() {
 
 void loop() {
   sensorInput = (double)analogRead(tempPin);
-  currentTemp = convertInputToDegrees(sensorInput) - accuracyOffset;
+  currentTemp = convertInputToDegrees(sensorInput);
   currentVoltage = convertInputToVoltage(sensorInput);
   isInRedRange = checkIsInTempRange(redMin, redMax, currentTemp);
   isInGreenRange = checkIsInTempRange(greenMin, greenMax, currentTemp);
