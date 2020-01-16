@@ -9,16 +9,16 @@ double currentVoltage;
 // ADJUST LED PIN NUMBERS IF NECESSARY
 int redLED = 8;
 double redMin = 18.00;
-double redMax = 22.99;
+double redMax = 30.00;
 bool isInRedRange;
 
 int greenLED = 9;
-double greenMin = 23.0;
-double greenMax = 27.99;
+double greenMin = 22.0;
+double greenMax = 30.00;
 bool isInGreenRange;
 
 int blueLED = 10;
-double blueMin = 28.00;
+double blueMin = 26.00;
 double blueMax = 30.00;
 bool isInBlueRange;
 
@@ -83,7 +83,7 @@ void loop() {
 
   Serial.print("Voltage (Offset Adjusted): ");
   Serial.print(currentVoltage - 0.5);
-  Serial.println("V");
+  Serial.println("V\n");
 
-  delay(500);
+  delay(2000);
 }
