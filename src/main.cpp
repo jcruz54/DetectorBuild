@@ -63,6 +63,7 @@ void loop() {
   sensorInput = (double)analogRead(tempPin);
   currentTemp = convertInputToDegrees(sensorInput);
   currentVoltage = convertInputToVoltage(sensorInput);
+
   isInRedRange = checkIsInTempRange(redMin, redMax, currentTemp);
   isInGreenRange = checkIsInTempRange(greenMin, greenMax, currentTemp);
   isInBlueRange = checkIsInTempRange(blueMin, blueMax, currentTemp);
@@ -77,10 +78,12 @@ void loop() {
   Serial.println("°C");
 
   Serial.print("Voltage: ");
-  Serial.println(currentVoltage);
+  Serial.print(currentVoltage);
+  Serial.println("V");
 
   Serial.print("Voltage (Offset Adjusted): ");
-  Serial.println(currentVoltage - 0.5);
+  Serial.print(currentVoltage - 0.5);
+  Serial.println("V");
 
   delay(500);
 }
