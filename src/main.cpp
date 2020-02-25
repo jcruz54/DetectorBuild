@@ -4,22 +4,23 @@ int tempPin = A0;
 int sensorInput;
 double currentTemp;
 double currentVoltage;
+double accuracyOffset = -2.8;
 
 // REMEMBER TO CHANGE TEMP RANGE VALUES BEFORE USING
 // ADJUST LED PIN NUMBERS IF NECESSARY
-int redLED = 8;
-double redMin = 18.00;
-double redMax = 30.00;
+int redLED = 12;
+double redMin = 0.00;
+double redMax = 15.00;
 bool isInRedRange;
 
-int greenLED = 9;
-double greenMin = 22.0;
-double greenMax = 30.00;
+int greenLED = 11;
+double greenMin = 15.1;
+double greenMax = 35.00;
 bool isInGreenRange;
 
 int blueLED = 10;
-double blueMin = 26.00;
-double blueMax = 30.00;
+double blueMin = 55.00;
+double blueMax = 100.00;
 bool isInBlueRange;
 
 bool checkIsInTempRange(double tempMin, double tempMax, double currentTemp) {
@@ -42,7 +43,7 @@ double convertInputToDegrees(double input) {
   /*
    * Converts temperature sensor input into degrees celsius.
    */
-  return (((input / 1024) * 5) - 0.5) * 100;
+  return ((((input / 1024) * 5) - 0.5) * 100) - accuracyOffset;
 }
 
 double convertInputToVoltage(double input) {
